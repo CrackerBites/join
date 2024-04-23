@@ -21,21 +21,6 @@ public final class Join extends JavaPlugin implements Listener {
                 "╚█████╔╝██║░░██║██║░░██║╚█████╔╝██║░╚██╗███████╗██║░░██║██████╦╝██║░░░██║░░░███████╗██████╔╝\n" +
                 "░╚════╝░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═════╝░╚═╝░░░╚═╝░░░╚══════╝╚═════╝░");
         getServer().getPluginManager().registerEvents(this, this);
+        getServer().getPluginManager().registerEvents(new ExtendedClass(this), this);
     }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        Location joinLocation = player.getLocation();
-        smoke(joinLocation);
-    }
-
-    private void smoke(Location location) {
-        if (location != null && location.getWorld() != null) {
-            location.getWorld().spawnParticle(Particle.SMOKE_LARGE, location, 100);
-        }
-
-    }
-
 }
-
